@@ -10,7 +10,7 @@ public class UtilCall {
     static String numberCall ;
     public static void call (AppCompatActivity appCompatActivity){
         try {
-            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            Intent callIntent = new Intent(Intent.ACTION_DIAL);
             callIntent.setData(Uri.parse("tel:" + numberCall));//change the number
         appCompatActivity.startActivity(callIntent);
         }catch (Exception e){
