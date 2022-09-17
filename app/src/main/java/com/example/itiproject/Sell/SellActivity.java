@@ -3,7 +3,7 @@ package com.example.itiproject.Sell;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,7 +16,9 @@ import com.example.itiproject.Enums.EnumPojo;
 import com.example.itiproject.Enums.EnumRecyclerView;
 import com.example.itiproject.Util.Pojo.UtilPojo;
 import com.example.itiproject.Util.Pojo.UtilPojoInterface;
+import com.example.itiproject.Util.UtilGmail;
 import com.example.itiproject.Util.UtilRecyclerShow;
+import com.example.itiproject.Util.UtilText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -72,20 +74,13 @@ public class SellActivity extends AppCompatActivity {
                 int quantity = Integer.parseInt(_quantity);
                 int price = Integer.parseInt(_price);
                 addListToRecycler(productName,price,quantity,dateString,shopName);
-                clearText(editTextDate,editTextPrice,editTextProductName,editTextQuantity,editTextShopName);
+                UtilText.clearText(editTextDate,editTextPrice,editTextProductName,editTextQuantity,editTextShopName);
             }
         });
 
 
     }
 
-    void clearText(EditText ...editTexts){
-        for(EditText editText:editTexts){
-            editText.setText("");
-
-        }
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,26 +93,10 @@ public class SellActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.action_settings){
             //intentGmail(arrayList);
-            intentGmail();
+            UtilGmail.intentGmail(this,  arrayListPojo);
             return true;
         }
         return super.onOptionsItemSelected(item);
 
     }
-    void intentGmail(){
-        final Intent intent = new Intent(Intent.ACTION_SEND);
-
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"test00@gmail.com"});
-        intent.putExtra(Intent.EXTRA_SUBJECT, "test00");
-        StringBuilder body = new StringBuilder();
-
-        for (UtilPojoInterface storeAggregateData: arrayListPojo){
-        body.append(storeAggregateData.toString());
-        body.append(System.getProperty("line.separator"));
-        }
-        intent .putExtra(Intent.EXTRA_TEXT, body.toString());
-        intent.setType("message/rfc822");
-       // intent.setData(Uri.parse("testoot@gmail.com"));
-
-        startActivity(intent);   }
 }

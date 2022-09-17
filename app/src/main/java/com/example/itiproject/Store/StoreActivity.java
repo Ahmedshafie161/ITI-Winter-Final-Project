@@ -13,6 +13,7 @@ import com.example.itiproject.Enums.EnumRecyclerView;
 import com.example.itiproject.Util.Pojo.UtilPojo;
 import com.example.itiproject.Util.Pojo.UtilPojoInterface;
 import com.example.itiproject.Util.UtilRecyclerShow;
+import com.example.itiproject.Util.UtilText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -50,19 +51,13 @@ import java.util.ArrayList;
                 StoreAggregateData storeAggregateData = (StoreAggregateData) UtilPojo.intializePojo(EnumPojo.StoreAggregateData,valueArray);
                 StoreMyRecyclerAdapter myRecyclerAdapter =(StoreMyRecyclerAdapter) recyclerView.getAdapter();
                 myRecyclerAdapter.addItem(storeAggregateData);
-                clearText(editTextName,editTextPrice,editTextNumber);
+                UtilText.clearText(editTextName,editTextPrice,editTextNumber);
             }
         });
 
 
     }
-     void clearText(EditText ...editTexts){
-         for(EditText editText:editTexts){
-             editText.setText("");
 
-         }
-
-     }
     public void resetNumbers(View view){
         StoreMyRecyclerAdapter myRecyclerAdapter =(StoreMyRecyclerAdapter) recyclerView.getAdapter();
         myRecyclerAdapter.resetNumbers();
