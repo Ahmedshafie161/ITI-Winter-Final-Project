@@ -23,6 +23,7 @@ import com.example.itiproject.Util.UtilCall;
 import com.example.itiproject.Util.Pojo.UtilPojo;
 import com.example.itiproject.Util.Pojo.UtilPojoInterface;
 import com.example.itiproject.Util.UtilRecyclerShow;
+import com.example.itiproject.Util.UtilText;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.Task;
@@ -145,18 +146,11 @@ e.printStackTrace();
                 ShopAggregateData shopAggregateData = (ShopAggregateData) UtilPojo.intializePojo(EnumPojo.ShopAggregateData,valueArray);
                 ShopMyRecyclerAdapter myRecyclerAdapter =(ShopMyRecyclerAdapter) shopRecyclerView.getAdapter();
                 myRecyclerAdapter.addItem(shopAggregateData);
-                clearText(editTextShopName,editTextLocation,editTextPhone,editTextVisit);
+                UtilText.clearText(editTextShopName, editTextLocation, editTextPhone, editTextVisit);
                 Toast.makeText(this, "added",Toast.LENGTH_SHORT).show();
 
             }
         });
-    }
-    void clearText(EditText ...editTexts){
-        for(EditText editText:editTexts){
-            editText.setText("");
-
-        }
-
     }
     public void findLocation(View v ){
         if(!selectedLatitude.isEmpty()&&!selectedLongitude.isEmpty())
