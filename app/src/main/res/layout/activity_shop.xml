@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Shop.ShopActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shop_recyclerView"
+        android:layout_width="406dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="112dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/shop_btnResutLast"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="18dp"
+        android:hint="Set todayDate"
+        android:onClick="resetLastVisit"
+        app:layout_constraintBottom_toTopOf="@+id/shop_etShopName"
+        app:layout_constraintEnd_toStartOf="@+id/shop_btnCall"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shop_recyclerView" />
+
+    <Button
+        android:id="@+id/shop_btnCall"
+        android:layout_width="126dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="18dp"
+        android:hint="Make Call"
+        android:onClick="shop_btnCall"
+        app:layout_constraintBottom_toTopOf="@+id/shop_etShopName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shop_btnResutLast"
+        app:layout_constraintTop_toBottomOf="@+id/shop_recyclerView" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/shop_btnFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="14dp"
+        android:clickable="true"
+        android:onClick="showFloatButton"
+        app:layout_constraintBottom_toTopOf="@+id/shop_etLastVisit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shop_etShopPhone"
+        app:layout_constraintTop_toBottomOf="@+id/shop_etShopLocation"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/shop_etShopName"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="Shop Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/shop_etShopLocation"
+        app:layout_constraintEnd_toEndOf="@+id/shop_etShopLocation"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shop_btnCall" />
+
+    <EditText
+        android:id="@+id/shop_etLastVisit"
+        android:layout_width="180dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Last Visit : m-d-y"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/shop_etShopPhone"
+        app:layout_constraintStart_toStartOf="@+id/shop_etShopPhone"
+        app:layout_constraintTop_toBottomOf="@+id/shop_btnFab" />
+
+    <EditText
+        android:id="@+id/shop_etShopPhone"
+        android:layout_width="180dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="73dp"
+        android:ems="10"
+        android:hint="Phone"
+        android:inputType="number|phone"
+        app:layout_constraintBottom_toTopOf="@+id/shop_etLastVisit"
+        app:layout_constraintEnd_toStartOf="@+id/shop_btnFab"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/shop_etShopLocation" />
+
+    <EditText
+        android:id="@+id/shop_etShopLocation"
+        android:layout_width="180dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="3dp"
+        android:ems="10"
+        android:hint="Shop Location"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/shop_btnFab"
+        app:layout_constraintEnd_toEndOf="@+id/shop_etShopPhone"
+        app:layout_constraintStart_toStartOf="@+id/shop_etShopPhone"
+        app:layout_constraintTop_toBottomOf="@+id/shop_etShopName" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="185dp"
+        android:onClick="findLocation"
+        android:text="Location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shop_etShopName"
+        app:layout_constraintTop_toBottomOf="@+id/shop_recyclerView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

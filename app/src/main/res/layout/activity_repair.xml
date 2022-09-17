@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Repair.RepairActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RepairRecyclerView"
+        android:layout_width="377dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginBottom="39dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="587dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:onClick="addProblem"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/RepairRecyclerView"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <RadioGroup
+        android:id="@+id/repair_radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/RepairRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <RadioButton
+            android:id="@+id/repair_power"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Power" />
+
+        <RadioButton
+            android:id="@+id/repair_badUssage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bad Usage" />
+
+        <RadioButton
+            android:id="@+id/repair_wrapping"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wrapping" />
+
+        <RadioButton
+            android:id="@+id/repair_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Other" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/repair_et_productName"
+        android:layout_width="143dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:hint="Product Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/repair_et_shopName"
+        android:layout_width="143dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Shop Name"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/repair_et_productName"
+        app:layout_constraintTop_toBottomOf="@+id/repair_et_productName" />
+
+    <EditText
+        android:id="@+id/repair_et_description"
+        android:layout_width="143dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/repair_et_shopName"
+        app:layout_constraintTop_toBottomOf="@+id/repair_et_shopName" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="244dp"
+        android:text="Problem Type"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/RepairRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/RepairRecyclerView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
