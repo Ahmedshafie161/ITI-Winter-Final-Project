@@ -21,7 +21,6 @@ import com.example.itiproject.Enums.EnumRecyclerView;
 import com.example.itiproject.Util.GoogleMaps;
 import com.example.itiproject.Util.UtilCall;
 import com.example.itiproject.Util.Pojo.UtilPojo;
-import com.example.itiproject.Util.Pojo.UtilPojoInterface;
 import com.example.itiproject.Util.UtilRecyclerShow;
 import com.example.itiproject.Util.UtilText;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -52,7 +51,8 @@ public class ShopActivity extends AppCompatActivity {
         shopRecyclerView = findViewById(R.id.shop_recyclerView);
         shopRecyclerView=UtilRecyclerShow.showRecyclerView(arrayList,this, EnumRecyclerView.ShopMyRecyclerAdapter,shopRecyclerView);
         ShopMyRecyclerAdapter shopMyRecyclerAdapter = (ShopMyRecyclerAdapter) shopRecyclerView.getAdapter();
-        shopMyRecyclerAdapter.setRecyclerActivityListener((name, number,latitude, longtitude) -> {
+        assert shopMyRecyclerAdapter != null;
+        shopMyRecyclerAdapter.setRecyclerActivityListener((name, number, latitude, longtitude) -> {
             UtilCall.setNumber(number);
             Toast.makeText(ShopActivity.this,"Shop Selected : "+name,Toast.LENGTH_SHORT).show();
             selectedLongitude = longtitude ;
@@ -88,7 +88,7 @@ public class ShopActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
        super.onRequestPermissionsResult(requestCode,permissions,grantResults);
         if (requestCode==1001){
-            if (grantResults.length>0 && grantResults[0]== getPackageManager().PERMISSION_GRANTED){
+            if (grantResults.length>0 && grantResults[0]== PackageManager.PERMISSION_GRANTED){
                 getLastLocation();
             }else {
 
@@ -119,6 +119,7 @@ e.printStackTrace();
 
     public void resetLastVisit(View view){
         ShopMyRecyclerAdapter shopMyRecyclerAdapter=(ShopMyRecyclerAdapter) shopRecyclerView.getAdapter();
+        assert shopMyRecyclerAdapter != null;
         shopMyRecyclerAdapter.resetLastVisit();
     }
 
@@ -143,8 +144,9 @@ e.printStackTrace();
             if(!shopName.isEmpty()&&!phone.isEmpty()&&selectedLatitude!=null && selectedLongitude !=null&&!lastVisit.isEmpty()){
 
                 String []valueArray = {shopName, selectedLongitude,selectedLatitude,phone,lastVisit};
-                ShopAggregateData shopAggregateData = (ShopAggregateData) UtilPojo.intializePojo(EnumPojo.ShopAggregateData,valueArray,ShopAggregateData.class);
+                ShopAggregateData shopAggregateData =  UtilPojo.intializePojo(EnumPojo.ShopAggregateData,valueArray,ShopAggregateData.class);
                 ShopMyRecyclerAdapter myRecyclerAdapter =(ShopMyRecyclerAdapter) shopRecyclerView.getAdapter();
+                assert myRecyclerAdapter != null;
                 myRecyclerAdapter.addItem(shopAggregateData);
                 UtilText.clearText(editTextShopName, editTextLocation, editTextPhone, editTextVisit);
                 Toast.makeText(this, "added",Toast.LENGTH_SHORT).show();

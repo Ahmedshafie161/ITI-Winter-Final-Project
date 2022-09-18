@@ -15,7 +15,6 @@ import com.example.itiproject.Store.StoreAggregateData;
 import com.example.itiproject.Enums.EnumPojo;
 import com.example.itiproject.Enums.EnumRecyclerView;
 import com.example.itiproject.Util.Pojo.UtilPojo;
-import com.example.itiproject.Util.Pojo.UtilPojoInterface;
 import com.example.itiproject.Util.UtilGmail;
 import com.example.itiproject.Util.UtilRecyclerShow;
 import com.example.itiproject.Util.UtilText;
