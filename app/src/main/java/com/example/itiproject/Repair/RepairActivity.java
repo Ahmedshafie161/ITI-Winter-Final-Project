@@ -35,9 +35,9 @@ public class RepairActivity extends AppCompatActivity {
          description = findViewById(R.id.repair_et_description);
 
         String []arrrayData = {"ahmed","ali" ,"prblem" , "dededodod","true"};
-        ArrayList arrayListData = new ArrayList( );
+        ArrayList <RepairAggregateData>arrayListData = new ArrayList( );
        try {
-           arrayListData = UtilPojo.intializePojoList(EnumPojo.RepairAggregateData, arrrayData, arrayListData);
+           arrayListData = UtilPojo.intializePojoList(EnumPojo.RepairAggregateData, arrrayData, arrayListData,RepairAggregateData.class);
             recyclerView = findViewById(R.id.RepairRecyclerView);
            recyclerView = UtilRecyclerShow.showRecyclerView(arrayListData, this, EnumRecyclerView.RepairMyReceyclerAdapter, recyclerView);
        }catch ( Exception e){
@@ -55,7 +55,7 @@ public class RepairActivity extends AppCompatActivity {
         if (!shopNameText.isEmpty()&&!productNameText.isEmpty()&&!problemType.isEmpty()){
             RepairMyRecyclerAdapter repairMyRecyclerAdapter = (RepairMyRecyclerAdapter) recyclerView.getAdapter();
             String[] arrayData = {productNameText,shopNameText,problemType,descriptionText,"false"};
-            RepairAggregateData repairAggregateData = (RepairAggregateData) UtilPojo.intializePojo(EnumPojo.RepairAggregateData,arrayData);
+            RepairAggregateData repairAggregateData =  UtilPojo.intializePojo(EnumPojo.RepairAggregateData,arrayData,RepairAggregateData.class);
             repairMyRecyclerAdapter.addItem(repairAggregateData);
             clearText(productName,shopName,description);
         }

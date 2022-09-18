@@ -91,8 +91,8 @@ public class SellMyRecyclerAdapter extends RecyclerView.Adapter<SellMyRecyclerAd
             etShopName.setText("Shop Name "+ arrayAggr.getShopName());
 
             etProductName.setText("Product Name "+ arrayAggr.getName());
-            etMoney.setText("Total Money : "+String.valueOf((arrayAggr.getPrice()*arrayAggr.getQuantity())));
-            etQuantity.setText("Quantity : "+String.valueOf(arrayAggr.getQuantity()));
+            etMoney.setText("Total Money : "+ arrayAggr.getPrice() * arrayAggr.getQuantity());
+            etQuantity.setText("Quantity : "+ arrayAggr.getQuantity());
             if(arrayAggr.getSoldDate()!=null){
                 etDate.setText("Date : "+arrayAggr.getSoldDate().toString()) ;
             }

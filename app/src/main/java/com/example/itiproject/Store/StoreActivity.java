@@ -19,7 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
  public class StoreActivity extends AppCompatActivity {
-    ArrayList <UtilPojoInterface> arrayListPojo ;
+    ArrayList <StoreAggregateData> arrayListPojo ;
     RecyclerView recyclerView ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
         String [] arrayValue1 = {"hassona","ahmed","10.5","010",""};
 
-        arrayListPojo= UtilPojo.intializePojoList(EnumPojo.StoreAggregateData,arrayValue1,arrayListPojo);
+        arrayListPojo= UtilPojo.intializePojoList(EnumPojo.StoreAggregateData,arrayValue1,arrayListPojo,StoreAggregateData.class);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView= UtilRecyclerShow.showRecyclerView(arrayListPojo,this, EnumRecyclerView.StoreMyRecyclerAdapter,recyclerView);
         showFloatButton();
@@ -48,7 +48,7 @@ import java.util.ArrayList;
                 int quantity = Integer.parseInt(_quantity);
                 int price = Integer.parseInt(_price);
                 String []valueArray = {"",name,String.valueOf(price),String.valueOf(quantity),""};
-                StoreAggregateData storeAggregateData = (StoreAggregateData) UtilPojo.intializePojo(EnumPojo.StoreAggregateData,valueArray);
+                StoreAggregateData storeAggregateData = (StoreAggregateData) UtilPojo.intializePojo(EnumPojo.StoreAggregateData,valueArray,StoreAggregateData.class);
                 StoreMyRecyclerAdapter myRecyclerAdapter =(StoreMyRecyclerAdapter) recyclerView.getAdapter();
                 myRecyclerAdapter.addItem(storeAggregateData);
                 UtilText.clearText(editTextName,editTextPrice,editTextNumber);

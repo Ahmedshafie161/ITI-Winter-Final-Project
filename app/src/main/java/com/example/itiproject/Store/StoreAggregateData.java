@@ -7,7 +7,7 @@ import com.example.itiproject.Util.Pojo.UtilPojoInterface;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
-public class StoreAggregateData implements UtilPojoInterface {
+public class StoreAggregateData implements UtilPojoInterface  {
 
     public   LinkedHashMap<String,Object > attributeMap = new LinkedHashMap<>();
 

@@ -32,7 +32,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class ShopActivity extends AppCompatActivity {
-    ArrayList<UtilPojoInterface> arrayList = new ArrayList<>();
+    ArrayList<ShopAggregateData> arrayList = new ArrayList<>();
     RecyclerView shopRecyclerView ;
     FusedLocationProviderClient fusedLocationProviderClient;
     String selectedLongitude;
@@ -47,7 +47,7 @@ public class ShopActivity extends AppCompatActivity {
 
 
         String [] arrayValue1 = {"ahmed","cairo","10","1","2-3-2010"};
-        arrayList= UtilPojo.intializePojoList(EnumPojo.ShopAggregateData,arrayValue1,arrayList);
+        arrayList= UtilPojo.intializePojoList(EnumPojo.ShopAggregateData,arrayValue1,arrayList,ShopAggregateData.class);
 
         shopRecyclerView = findViewById(R.id.shop_recyclerView);
         shopRecyclerView=UtilRecyclerShow.showRecyclerView(arrayList,this, EnumRecyclerView.ShopMyRecyclerAdapter,shopRecyclerView);
@@ -143,7 +143,7 @@ e.printStackTrace();
             if(!shopName.isEmpty()&&!phone.isEmpty()&&selectedLatitude!=null && selectedLongitude !=null&&!lastVisit.isEmpty()){
 
                 String []valueArray = {shopName, selectedLongitude,selectedLatitude,phone,lastVisit};
-                ShopAggregateData shopAggregateData = (ShopAggregateData) UtilPojo.intializePojo(EnumPojo.ShopAggregateData,valueArray);
+                ShopAggregateData shopAggregateData = (ShopAggregateData) UtilPojo.intializePojo(EnumPojo.ShopAggregateData,valueArray,ShopAggregateData.class);
                 ShopMyRecyclerAdapter myRecyclerAdapter =(ShopMyRecyclerAdapter) shopRecyclerView.getAdapter();
                 myRecyclerAdapter.addItem(shopAggregateData);
                 UtilText.clearText(editTextShopName, editTextLocation, editTextPhone, editTextVisit);

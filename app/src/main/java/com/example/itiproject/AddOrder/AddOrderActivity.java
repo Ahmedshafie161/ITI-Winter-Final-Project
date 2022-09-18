@@ -11,6 +11,7 @@ import com.example.itiproject.Enums.EnumPojo;
 import com.example.itiproject.Enums.EnumRecyclerView;
 import com.example.itiproject.R;
 import com.example.itiproject.Util.Pojo.UtilPojo;
+import com.example.itiproject.Util.Pojo.UtilPojoInterface;
 import com.example.itiproject.Util.UtilRecyclerShow;
 import com.example.itiproject.Util.UtilText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -37,8 +38,8 @@ public class AddOrderActivity extends AppCompatActivity {
          etDate = findViewById(R.id.addOrder_et_date);
 
         String[] stringData = {"ahmed", "mohamed","5","2-3-2002"};
-        ArrayList arrayDataList = new ArrayList();
-        arrayDataList =UtilPojo.intializePojoList(EnumPojo.AddOrderAggregateData,stringData,arrayDataList);
+        ArrayList <UtilPojoInterface> arrayDataList = new ArrayList();
+        arrayDataList =UtilPojo.intializePojoList(EnumPojo.AddOrderAggregateData,stringData,arrayDataList, UtilPojoInterface.class);
         recyclerView = findViewById(R.id.addOrder_recyclerView);
         recyclerView = UtilRecyclerShow.showRecyclerView(arrayDataList,this, EnumRecyclerView.AddOrderMyRecyclerAdapter,recyclerView);
 
@@ -51,7 +52,7 @@ public class AddOrderActivity extends AppCompatActivity {
         String quantity = etQuantity.getText().toString();
         String date = etDate.getText().toString();
         String []arrData = {productName,shopName,quantity,date};
-        AddOrderAggregateData addOrderAggregateData=(AddOrderAggregateData) UtilPojo.intializePojo(EnumPojo.AddOrderAggregateData,arrData);
+        AddOrderAggregateData addOrderAggregateData= UtilPojo.intializePojo(EnumPojo.AddOrderAggregateData,arrData,AddOrderAggregateData.class);
         AddOrderMyRecyclerAdapter addOrderMyRecyclerAdapter = (AddOrderMyRecyclerAdapter) recyclerView.getAdapter();
         addOrderMyRecyclerAdapter.addItem(addOrderAggregateData);
         UtilText.clearText(etProductName,etShopName,etQuantity,etDate);

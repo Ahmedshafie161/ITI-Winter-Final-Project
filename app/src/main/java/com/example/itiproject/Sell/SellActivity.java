@@ -25,7 +25,8 @@ import java.util.ArrayList;
 
 public class SellActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    ArrayList <UtilPojoInterface> arrayListPojo = new ArrayList<>();
+    ArrayList <StoreAggregateData> arrayListPojo = new ArrayList<>();
+
     boolean intialized =false ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,8 @@ public class SellActivity extends AppCompatActivity {
 
         String [] arrayValue1 = {"hassona","ahmed","10.5","010","06-07-2009"};
 
-            arrayListPojo= UtilPojo.intializePojoList(EnumPojo.StoreAggregateData,arrayValue1,arrayListPojo);
+
+        arrayListPojo= UtilPojo.intializePojoList(EnumPojo.StoreAggregateData,arrayValue1,arrayListPojo,StoreAggregateData.class);
             recyclerView= UtilRecyclerShow.showRecyclerView(arrayListPojo,this, EnumRecyclerView.SellMyRecyclerAdapter,recyclerView);
             showFloatButton();
     }
@@ -44,11 +46,11 @@ public class SellActivity extends AppCompatActivity {
         String [] arrayValues ={shopName,name,String.valueOf(price),String.valueOf(quantity),String.valueOf(date)};
         // if data not sent in onCreate
         if (!intialized){
-            arrayListPojo = UtilPojo.intializePojoList(EnumPojo.StoreAggregateData,arrayValues, arrayListPojo);
+            arrayListPojo = UtilPojo.intializePojoList(EnumPojo.StoreAggregateData,arrayValues, arrayListPojo,StoreAggregateData.class);
             recyclerView= UtilRecyclerShow.showRecyclerView(arrayListPojo,this,EnumRecyclerView.SellMyRecyclerAdapter,recyclerView);
             intialized =true ;
         }else {
-            StoreAggregateData storeAggregateData = (StoreAggregateData) UtilPojo.intializePojo(EnumPojo.StoreAggregateData,arrayValues);
+            StoreAggregateData storeAggregateData =  UtilPojo.intializePojo(EnumPojo.StoreAggregateData,arrayValues,StoreAggregateData.class);
             SellMyRecyclerAdapter sellMyRecyclerAdapter =(SellMyRecyclerAdapter)recyclerView.getAdapter();
             sellMyRecyclerAdapter.addItem(storeAggregateData);
         }

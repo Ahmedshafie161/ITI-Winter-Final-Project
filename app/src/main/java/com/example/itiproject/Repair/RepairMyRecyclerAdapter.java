@@ -97,10 +97,10 @@ public class RepairMyRecyclerAdapter extends RecyclerView.Adapter<RepairMyRecycl
         void bind(RepairAggregateData arrayAggr ){
             attributeMap = arrayAggr.getAttributeMap() ;
             this.arrayAggr=arrayAggr;
-            tvProdName.setText("Product Name "+attributeMap.get(com.example.itiproject.Repair.RepairAggregateData.PRODUCT_NAME));
-            tvShopName.setText("Shop Name : "+attributeMap.get(com.example.itiproject.Repair.RepairAggregateData.SHOP_NAME));
-            tvDescription.setText("description : "+attributeMap.get(com.example.itiproject.Repair.RepairAggregateData.DESCRIPTION));
-            tvProblemType.setText("problemType: "+attributeMap.get(com.example.itiproject.Repair.RepairAggregateData.PROBLEM_TYPE));
+            tvProdName.setText("Product Name "+attributeMap.get(RepairAggregateData.PRODUCT_NAME));
+            tvShopName.setText("Shop Name : "+attributeMap.get(RepairAggregateData.SHOP_NAME));
+            tvDescription.setText("description : "+attributeMap.get(RepairAggregateData.DESCRIPTION));
+            tvProblemType.setText("problemType: "+attributeMap.get(RepairAggregateData.PROBLEM_TYPE));
             tvIsRepaired.setText("is repaired : "+attributeMap.get(RepairAggregateData.IS_SOLVED));
         }
 
