@@ -7,9 +7,12 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+import com.example.itiproject.AddOrder.AddOrderAggregateData;
 import com.example.itiproject.Repair.RepairAggregateData;
+import com.example.itiproject.Shop.ShopAggregateData;
+import com.example.itiproject.Store.StoreAggregateData;
 
-@Database(entities = {RepairAggregateData.class}, version = 1)
+@Database(entities = {RepairAggregateData.class, AddOrderAggregateData.class, ShopAggregateData.class, StoreAggregateData.class}, version = 1)
 @TypeConverters(Converter.class)
 public abstract class AppDatabase extends RoomDatabase {
     public  abstract  CustomDao getPojoDao();

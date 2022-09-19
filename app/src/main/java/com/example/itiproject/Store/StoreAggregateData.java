@@ -1,14 +1,21 @@
 package com.example.itiproject.Store;
 
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.example.itiproject.Util.UtilDate;
 import com.example.itiproject.Util.Pojo.UtilPojoInterface;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
-
+@Entity
 public class StoreAggregateData implements UtilPojoInterface  {
 
+    @PrimaryKey(autoGenerate = true)
+    public  long id ;
+    @ColumnInfo
     public   LinkedHashMap<String,Object > attributeMap = new LinkedHashMap<>();
 
 

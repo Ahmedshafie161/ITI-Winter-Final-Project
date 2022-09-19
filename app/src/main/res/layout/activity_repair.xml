@@ -21,15 +21,15 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="587dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="80dp"
         android:clickable="true"
         android:onClick="addProblem"
         android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/RepairRecyclerView"
         tools:ignore="SpeakableTextPresentCheck"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:visibility="visible" />
 
     <RadioGroup
         android:id="@+id/repair_radioGroup"
@@ -107,16 +107,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/RepairRecyclerView"
         app:layout_constraintTop_toBottomOf="@+id/RepairRecyclerView" />
-
-    <Button
-        android:id="@+id/repair_btn_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="5dp"
-        android:onClick="save"
-        android:text="save"
-        app:layout_constraintBottom_toBottomOf="@+id/repair_et_shopName"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

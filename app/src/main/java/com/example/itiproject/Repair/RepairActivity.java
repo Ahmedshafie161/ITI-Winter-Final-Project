@@ -1,5 +1,4 @@
 package com.example.itiproject.Repair;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepairActivity extends AppCompatActivity {
+
     RadioGroup radioGroup;
     RecyclerView recyclerView;
     RadioButton radioButton;
@@ -33,30 +33,31 @@ public class RepairActivity extends AppCompatActivity {
 
     //Room database refrences
     private AppDatabase  appDatabase;
-    private RepairAggregateData repairAggregateData;
-
+//    private RepairAggregateData repairAggregateData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repair);
+        try {
+            //   arrayListData = UtilPojo.intializePojoList(EnumPojo.RepairAggregateData, arrrayData, arrayListData, RepairAggregateData.class);
+            recyclerView = findViewById(R.id.RepairRecyclerView);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //room intialization
         appDatabase = AppDatabase.getInstance(RepairActivity.this);
+        new ShowTask(this).execute();
 
         radioGroup = findViewById(R.id.repair_radioGroup);
         productName = findViewById(R.id.repair_et_productName);
         shopName = findViewById(R.id.repair_et_shopName);
         description = findViewById(R.id.repair_et_description);
 
-        String[] arrrayData = {"ahmed", "ali", "prblem", "dededodod", "true"};
-        ArrayList<RepairAggregateData> arrayListData = new ArrayList<>();
-        try {
-            arrayListData = UtilPojo.intializePojoList(EnumPojo.RepairAggregateData, arrrayData, arrayListData, RepairAggregateData.class);
-            recyclerView = findViewById(R.id.RepairRecyclerView);
-            recyclerView = UtilRecyclerShow.showRecyclerView(arrayListData, this, EnumRecyclerView.RepairMyReceyclerAdapter, recyclerView);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+       // String[] arrrayData = {"ahmed", "ali", "prblem", "dededodod", "true"};
+       // ArrayList<RepairAggregateData> arrayListData = new ArrayList<>();
     }
 
     public void addProblem(View view) {
@@ -73,6 +74,7 @@ public class RepairActivity extends AppCompatActivity {
             assert repairMyRecyclerAdapter != null;
             repairMyRecyclerAdapter.addItem(repairAggregateData);
             clearText(productName, shopName, description);
+            new InsertTask(this,repairAggregateData).execute();
         }
 
     }
@@ -85,7 +87,7 @@ public class RepairActivity extends AppCompatActivity {
 
     }
 
-    public void save (View view){
+    /*public void save (View view){
         Toast.makeText(RepairActivity.this, "button save cliked", Toast.LENGTH_SHORT).show();
         RepairAggregateData repairAggregateData= new RepairAggregateData() ;
         repairAggregateData.attributeMap.put(RepairAggregateData.PRODUCT_NAME,"ahmed");
@@ -95,8 +97,7 @@ public class RepairActivity extends AppCompatActivity {
 
         new InsertTask(this,repairAggregateData).execute();
         new ShowTask(this).execute();
-    }
-
+    }*/
 
     private static class InsertTask extends AsyncTask <Void,Void,Boolean> {
 
@@ -127,9 +128,10 @@ public class RepairActivity extends AppCompatActivity {
         }
     }
     private static class ShowTask extends AsyncTask <Void,Void,Boolean> {
+        List<RepairAggregateData> repairAggregateDataList;
 
         private WeakReference<RepairActivity> activityWeakReference;
-        List<RepairAggregateData> repairAggregateDataList;
+
 
         ShowTask(RepairActivity repairActivity){
             activityWeakReference=new WeakReference<>(repairActivity);
@@ -138,6 +140,7 @@ public class RepairActivity extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(Void... voids) {
             repairAggregateDataList = activityWeakReference.get().appDatabase.getPojoDao().getAll();
+/*
             for (RepairAggregateData repairAggregateData:repairAggregateDataList){
                 for(Object value:repairAggregateData.attributeMap.values()){
                     Log.e("Romm_return_value",value.toString());
@@ -145,13 +148,25 @@ public class RepairActivity extends AppCompatActivity {
                 }
                 Log.e("Romm_return_map", String.valueOf(repairAggregateData.id));
             }
+*/
             return true;
         }
 
         @Override
         protected void onPostExecute(Boolean o) {
             if (o){
-                Toast.makeText(activityWeakReference.get(),"Show_succ"+repairAggregateDataList.get(repairAggregateDataList.size()-1).id,Toast.LENGTH_LONG).show();
+                activityWeakReference.get().recyclerView= UtilRecyclerShow.showRecyclerView( (ArrayList) repairAggregateDataList, activityWeakReference.get(), EnumRecyclerView.RepairMyReceyclerAdapter,   activityWeakReference.get().recyclerView);
+
+/*
+                for (RepairAggregateData repairAggregateData :activityWeakReference.get().repairAggregateDataList)
+                {
+                    for (Object object : repairAggregateData.attributeMap.values()){
+                        Log.e("RoomRecieved", "onPostExecute: "+object.toString() );
+                    }
+                }
+*/
+              //  Toast.makeText(activityWeakReference.get(),"succ"+repairAggregateDataList.get(repairAggregateDataList.size()-1).id,Toast.LENGTH_LONG).show();
+
             }
         }
     }
