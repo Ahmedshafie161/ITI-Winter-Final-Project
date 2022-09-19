@@ -20,26 +20,27 @@ public class UtilRecyclerShow {
     public static RecyclerView showRecyclerView(ArrayList arrayList , AppCompatActivity appCompatActivity, EnumRecyclerView adapterClass, RecyclerView recyclerView){
         RecyclerView.Adapter adapter;
 
-        if (arrayList !=null) {
-            RecyclerView rW = recyclerView;
-            if (adapterClass.equals(EnumRecyclerView.ShopMyRecyclerAdapter)){
-                adapter = new ShopMyRecyclerAdapter(arrayList );
-            }else if (adapterClass.equals(EnumRecyclerView.StoreMyRecyclerAdapter)){
-                adapter = new StoreMyRecyclerAdapter(arrayList);
-            }else if (adapterClass.equals(EnumRecyclerView.SellMyRecyclerAdapter)){
-                adapter = new SellMyRecyclerAdapter(arrayList);
-            }else if (adapterClass.equals(EnumRecyclerView.RepairMyReceyclerAdapter)){
-                adapter = new RepairMyRecyclerAdapter(arrayList);
-            }else if (adapterClass.equals(EnumRecyclerView.AddOrderMyRecyclerAdapter)){
-                adapter = new AddOrderMyRecyclerAdapter(arrayList);
-            }
-            else{return null ;}
-
-            rW.setLayoutManager(new LinearLayoutManager(appCompatActivity));
-            rW.setAdapter(adapter);
-            adapter =null ;
-            return rW ;
+        if (arrayList==null){
+            arrayList= new ArrayList();
         }
+        RecyclerView rW = recyclerView;
+        if (adapterClass.equals(EnumRecyclerView.ShopMyRecyclerAdapter)){
+            adapter = new ShopMyRecyclerAdapter(arrayList );
+        }else if (adapterClass.equals(EnumRecyclerView.StoreMyRecyclerAdapter)){
+            adapter = new StoreMyRecyclerAdapter(arrayList);
+        }else if (adapterClass.equals(EnumRecyclerView.SellMyRecyclerAdapter)){
+            adapter = new SellMyRecyclerAdapter(arrayList);
+        }else if (adapterClass.equals(EnumRecyclerView.RepairMyReceyclerAdapter)){
+            adapter = new RepairMyRecyclerAdapter(arrayList);
+        }else if (adapterClass.equals(EnumRecyclerView.AddOrderMyRecyclerAdapter)){
+            adapter = new AddOrderMyRecyclerAdapter(arrayList);
+        }
+        else{return null ;}
+
+        rW.setLayoutManager(new LinearLayoutManager(appCompatActivity));
+        rW.setAdapter(adapter);
+        adapter =null ;
+        return rW ;
 
 /*
         if (arrayList.size()!=0) {
@@ -64,7 +65,6 @@ public class UtilRecyclerShow {
         }
 */
 
-        return null;
     }
 
     private  UtilRecyclerShow(){}

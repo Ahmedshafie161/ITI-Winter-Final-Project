@@ -64,11 +64,14 @@ import java.util.ArrayList;
         return arrayAggrList.size();
     }
 
-    public void resetNumbers() {
+    public  ArrayList<StoreAggregateData>  resetNumbers() {
+        ArrayList<StoreAggregateData> storeAggregateDataList = new ArrayList<>();
         for (StoreAggregateData storeAggregateData :arrayAggrList) {
             storeAggregateData.setQuantity(0);
+            storeAggregateDataList.add(storeAggregateData);
         }
         notifyDataSetChanged();
+        return storeAggregateDataList;
     }
 
     // inflate views ,bind data , register listener ,
