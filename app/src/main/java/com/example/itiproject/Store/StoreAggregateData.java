@@ -43,11 +43,11 @@ public class StoreAggregateData implements UtilPojoInterface  {
             return 0;
         return  Double.parseDouble(getAttributeMap().get("price").toString());
     }
-    public int getQuantity() {
+    public double getQuantity() {
         if(getAttributeMap().get("quantity").toString().trim().isEmpty()){
             return 0 ;
         }
-        return   Integer.parseInt(getAttributeMap().get("quantity").toString());
+        return   Double.parseDouble(getAttributeMap().get("quantity").toString());
     }
     public Date getSoldDate(){
 

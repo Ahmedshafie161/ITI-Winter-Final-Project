@@ -144,6 +144,8 @@ public class SellActivity extends AppCompatActivity {
                long j = activityWeakReference.get().appDatabase.getPojoDao().insert(sellAggregateData);
                sellAggregateData.id = j ;
                Log.e("Room_sell ", "doInBackground: " + j);
+               storeAggregateData.attributeMap.put("quantity",storeAggregateData.getQuantity()-quantity);
+               activityWeakReference.get().appDatabase.getPojoDao().update(storeAggregateData);
                return true;
            }
             Log.e("null pojo dependency","check store/sell string name/List") ;
