@@ -8,6 +8,7 @@ import androidx.room.Update;
 
 import com.example.itiproject.AddOrder.AddOrderAggregateData;
 import com.example.itiproject.Repair.RepairAggregateData;
+import com.example.itiproject.Sell.SellAggregateData;
 import com.example.itiproject.Shop.ShopAggregateData;
 import com.example.itiproject.Store.StoreAggregateData;
 
@@ -17,7 +18,7 @@ public interface CustomDao {
 
     // RepairAgg
     @Query("SELECT * FROM repairAggregateData")
-    List<RepairAggregateData> getAll();
+    List<RepairAggregateData> getRepairAll();
 
     @Insert
     long insert (RepairAggregateData task);
@@ -44,6 +45,8 @@ public interface CustomDao {
     // Store
     @Query("SELECT * FROM storeaggregatedata")
     List<StoreAggregateData> getAllStore();
+/*    @Query("SELECT * FROM storeaggregatedata WHERE ")
+    StoreAggregateData getStoreWithName(String storeName);*/
 
     @Insert
     long insert (StoreAggregateData task);
@@ -66,5 +69,19 @@ public interface CustomDao {
 
     @Update
     void update(ShopAggregateData shopAggregateData);
+
+    // Sell
+    @Query("SELECT * FROM sellaggregatedata")
+    List<SellAggregateData> getSellList();
+
+    @Insert
+    long insert (SellAggregateData task);
+
+    @Delete
+    void delete(SellAggregateData sellAggregateData);
+
+    @Update
+    void update(SellAggregateData sellAggregateData);
+
 
 }

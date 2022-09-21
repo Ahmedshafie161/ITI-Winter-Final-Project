@@ -33,4 +33,9 @@ public class AddOrderAggregateData implements UtilPojoInterface {
     public void setAttributeMap(LinkedHashMap linkedHashMap) {
         this.attributeMap = linkedHashMap;
     }
+
+    @Override
+    public String getName() {
+        return null;
+    }
 }

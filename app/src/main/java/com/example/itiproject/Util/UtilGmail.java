@@ -3,6 +3,7 @@ package com.example.itiproject.Util;
 import android.content.Context;
 import android.content.Intent;
 
+import com.example.itiproject.Sell.SellAggregateData;
 import com.example.itiproject.Util.Pojo.UtilPojoInterface;
 
 import java.util.ArrayList;
@@ -15,10 +16,12 @@ public class UtilGmail {
         intent.putExtra(Intent.EXTRA_SUBJECT, "test00");
         StringBuilder body = new StringBuilder();
 
-        for (Object  storeAggregateData :arrayListPojo) {
-            body.append(storeAggregateData.toString());
+        for (T sellAggregateData :arrayListPojo) {
+            body.append(sellAggregateData.toString());
             body.append(System.getProperty("line.separator"));
         }
+
+
         intent.putExtra(Intent.EXTRA_TEXT, body.toString());
         intent.setType("message/rfc822");
         // intent.setData(Uri.parse("testoot@gmail.com"));

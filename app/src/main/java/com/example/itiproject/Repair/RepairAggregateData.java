@@ -38,4 +38,9 @@ public class RepairAggregateData implements UtilPojoInterface, Serializable {
     public void setAttributeMap(LinkedHashMap linkedHashMap) {
         this.attributeMap = linkedHashMap;
     }
+
+    @Override
+    public String getName() {
+        return null;
+    }
 }

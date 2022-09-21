@@ -56,7 +56,8 @@ public class ShopAggregateData implements UtilPojoInterface {
 
     }
 
-    public String getShopName() {
+    @Override
+    public String getName() {
 
          return String.valueOf(getAttributeMap().get("shopName"));
     }

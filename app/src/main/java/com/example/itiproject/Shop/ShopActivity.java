@@ -145,7 +145,7 @@ e.printStackTrace();
             if(!shopName.isEmpty()&&!phone.isEmpty()&&selectedLatitude!=null && selectedLongitude !=null&&!lastVisit.isEmpty()){
 
                 String []valueArray = {shopName, selectedLongitude,selectedLatitude,phone,lastVisit};
-                ShopAggregateData shopAggregateData =  UtilPojo.intializePojo(EnumPojo.ShopAggregateData,valueArray,ShopAggregateData.class);
+                ShopAggregateData shopAggregateData =  UtilPojo.getPojoFromArray(EnumPojo.ShopAggregateData,valueArray,ShopAggregateData.class);
                 ShopMyRecyclerAdapter myRecyclerAdapter =(ShopMyRecyclerAdapter) recyclerView.getAdapter();
                 assert myRecyclerAdapter != null;
                 myRecyclerAdapter.addItem(shopAggregateData);

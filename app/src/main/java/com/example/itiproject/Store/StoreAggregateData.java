@@ -27,6 +27,7 @@ public class StoreAggregateData implements UtilPojoInterface  {
         attributeMap.put("soldDate","");
     }
 
+    @Override
     public String getName() {
 
         return  (String) getAttributeMap().get("name");
@@ -58,12 +59,6 @@ public class StoreAggregateData implements UtilPojoInterface  {
     }
     public void setQuantity(int quantity) {
         attributeMap.put("quantity", String.valueOf(quantity));
-    }
-
-    public String getShopName() {
-        /*if(!shopName.isEmpty());*/
-        return (String) getAttributeMap().get("shopName");
-
     }
 
     public void setShopName(String shopName) {

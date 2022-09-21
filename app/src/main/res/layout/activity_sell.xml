@@ -8,12 +8,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sell_recyclerView"
-        android:layout_width="407dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="192dp"
-        app:layout_constraintBottom_toTopOf="@+id/sell_etDate"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/sell_etShopName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,14 +32,14 @@
         android:id="@+id/sell_etShopName"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="209dp"
         android:ems="10"
         android:hint="Shop Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sell_recyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sell_etProductName"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
@@ -48,39 +47,28 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="51dp"
         android:ems="10"
         android:hint="Product"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/sell_etShopName"
-        app:layout_constraintTop_toBottomOf="@+id/sell_etShopName"
+        app:layout_constraintBottom_toTopOf="@+id/sell_etDate"
+        app:layout_constraintStart_toStartOf="@+id/sell_etQuantity"
+        app:layout_constraintTop_toTopOf="@+id/sell_etShopName"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/sell_etQuantity"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="36dp"
         android:ems="10"
         android:hint="Quantity"
         android:inputType="number"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/sell_etPrice"
-        app:layout_constraintTop_toBottomOf="@+id/sell_etPrice"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <EditText
-        android:id="@+id/sell_etPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="number"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/sell_etProductName"
+        app:layout_constraintBottom_toTopOf="@+id/sell_floatButton"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sell_etProductName"
         tools:ignore="TouchTargetSizeCheck" />
 
@@ -89,13 +77,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="65dp"
         android:ems="10"
         android:hint="Date : MM-dd-yyyy"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/sell_etQuantity"
-        app:layout_constraintTop_toBottomOf="@+id/sell_recyclerView"
         tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

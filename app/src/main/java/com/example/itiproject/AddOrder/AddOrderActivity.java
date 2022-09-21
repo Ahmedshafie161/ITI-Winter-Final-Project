@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.example.itiproject.Enums.EnumPojo;
 import com.example.itiproject.Enums.EnumRecyclerView;
 import com.example.itiproject.R;
-import com.example.itiproject.Repair.RepairActivity;
 import com.example.itiproject.Repair.RepairAggregateData;
 import com.example.itiproject.RoomDatabase.AppDatabase;
 import com.example.itiproject.Util.Pojo.UtilPojo;
@@ -67,7 +66,7 @@ public class AddOrderActivity extends AppCompatActivity {
         String quantity = etQuantity.getText().toString();
         String date = etDate.getText().toString();
         String []arrData = {productName,shopName,quantity,date};
-        AddOrderAggregateData addOrderAggregateData= UtilPojo.intializePojo(EnumPojo.AddOrderAggregateData,arrData,AddOrderAggregateData.class);
+        AddOrderAggregateData addOrderAggregateData= UtilPojo.getPojoFromArray(EnumPojo.AddOrderAggregateData,arrData,AddOrderAggregateData.class);
         AddOrderMyRecyclerAdapter addOrderMyRecyclerAdapter = (AddOrderMyRecyclerAdapter) recyclerView.getAdapter();
         assert addOrderMyRecyclerAdapter != null;
         addOrderMyRecyclerAdapter.addItem(addOrderAggregateData);

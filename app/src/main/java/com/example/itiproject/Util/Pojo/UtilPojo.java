@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UtilPojo {
 
-    public static <T extends UtilPojoInterface> ArrayList <T> intializePojoList(EnumPojo pojoClassName, String[] arrayValues, ArrayList<T>  pojoArrayList,Class<T>className) {
+    public static <T extends UtilPojoInterface> ArrayList <T> getArraylistPojoFromArray(EnumPojo pojoClassName, String[] arrayValues, ArrayList<T>  pojoArrayList, Class<T>className) {
         if (pojoArrayList == null) {
             pojoArrayList = new ArrayList<T>();
         }
@@ -20,11 +20,11 @@ public class UtilPojo {
         for (T item :pojoArrayList){
             pojoList.add(item);
         }*/
-        pojoArrayList.add(intializePojo(pojoClassName, arrayValues, className));
+        pojoArrayList.add(getPojoFromArray(pojoClassName, arrayValues, className));
         return pojoArrayList;
     }
 
-    public static <T extends UtilPojoInterface> T intializePojo(EnumPojo pojoClassName, String[] arrayValues,Class<T>className) {
+    public static <T extends UtilPojoInterface> T getPojoFromArray(EnumPojo pojoClassName, String[] arrayValues, Class<T>className) {
 
         LinkedHashMap hashMap;
         UtilPojoInterface aggregateData = null;
@@ -55,6 +55,15 @@ public class UtilPojo {
         }
 
         return (T) aggregateData;
+    }
+
+    public static <T extends UtilPojoInterface> T getPojoFromArrayList(String name, ArrayList<T> AggregateDataList){
+        for (T aggregateData: AggregateDataList){
+            if (name.equals(aggregateData.getName())){
+                return aggregateData ;
+            }
+        }
+        return null ;
     }
 
    /* public static ArrayList intializePojoList(EnumPojo pojoClassName, String[] arrayValues, ArrayList<UtilPojoInterface> pojoArrayList) {

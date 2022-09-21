@@ -70,7 +70,7 @@ public class RepairActivity extends AppCompatActivity {
         if (!shopNameText.isEmpty() && !productNameText.isEmpty() && !problemType.isEmpty()) {
             RepairMyRecyclerAdapter repairMyRecyclerAdapter = (RepairMyRecyclerAdapter) recyclerView.getAdapter();
             String[] arrayData = {productNameText, shopNameText, problemType, descriptionText, "false"};
-            RepairAggregateData repairAggregateData = UtilPojo.intializePojo(EnumPojo.RepairAggregateData, arrayData, RepairAggregateData.class);
+            RepairAggregateData repairAggregateData = UtilPojo.getPojoFromArray(EnumPojo.RepairAggregateData, arrayData, RepairAggregateData.class);
             assert repairMyRecyclerAdapter != null;
             repairMyRecyclerAdapter.addItem(repairAggregateData);
             clearText(productName, shopName, description);
@@ -139,7 +139,7 @@ public class RepairActivity extends AppCompatActivity {
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            repairAggregateDataList = activityWeakReference.get().appDatabase.getPojoDao().getAll();
+            repairAggregateDataList = activityWeakReference.get().appDatabase.getPojoDao().getRepairAll();
 /*
             for (RepairAggregateData repairAggregateData:repairAggregateDataList){
                 for(Object value:repairAggregateData.attributeMap.values()){

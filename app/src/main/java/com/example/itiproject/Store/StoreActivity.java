@@ -59,7 +59,7 @@ public class StoreActivity extends AppCompatActivity {
                 int quantity = Integer.parseInt(_quantity);
                 int price = Integer.parseInt(_price);
                 String []valueArray = {"",name,String.valueOf(price),String.valueOf(quantity),""};
-                StoreAggregateData storeAggregateData =  UtilPojo.intializePojo(EnumPojo.StoreAggregateData,valueArray,StoreAggregateData.class);
+                StoreAggregateData storeAggregateData =  UtilPojo.getPojoFromArray(EnumPojo.StoreAggregateData,valueArray,StoreAggregateData.class);
                 StoreMyRecyclerAdapter myRecyclerAdapter =(StoreMyRecyclerAdapter) recyclerView.getAdapter();
                 myRecyclerAdapter.addItem(storeAggregateData);
                 UtilText.clearText(editTextName,editTextPrice,editTextNumber);

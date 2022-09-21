@@ -103,10 +103,10 @@ public class ShopMyRecyclerAdapter extends RecyclerView.Adapter<ShopMyRecyclerAd
         // bind data to views
         void bind(ShopAggregateData arrayAggr ){
             this.arrayAggr=arrayAggr;
-            tvName.setText("Shop Name "+arrayAggr.getShopName());
-            tvLocation.setText("location : "+arrayAggr.getLocation());
-            tvTelephone.setText("phone : "+arrayAggr.getPhone());
-            tvLastVisit.setText("Last Visit : "+arrayAggr.getLastVisit());
+            tvName.setText("Shop Name :"+arrayAggr.getName());
+            tvLocation.setText("location :"+arrayAggr.getLocation());
+            tvTelephone.setText("phone :"+arrayAggr.getPhone());
+            tvLastVisit.setText("Last Visit :"+arrayAggr.getLastVisit());
         }
 
     }
