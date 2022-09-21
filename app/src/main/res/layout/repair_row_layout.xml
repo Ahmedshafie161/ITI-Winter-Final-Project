@@ -55,4 +55,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Switch
+        android:id="@+id/repair_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="21dp"
+        android:minHeight="48dp"
+        android:text="Repared?"
+        app:layout_constraintBottom_toTopOf="@+id/repair_isRepaired"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/repair_problemType" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,9 +6,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.itiproject.Enums.EnumPojo;
@@ -38,6 +40,7 @@ public class RepairActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repair);
+
         try {
             //   arrayListData = UtilPojo.intializePojoList(EnumPojo.RepairAggregateData, arrrayData, arrayListData, RepairAggregateData.class);
             recyclerView = findViewById(R.id.RepairRecyclerView);
@@ -124,6 +127,30 @@ public class RepairActivity extends AppCompatActivity {
                 Toast.makeText(activityWeakReference.get(),"succ"+repairAggregateData.id,Toast.LENGTH_LONG).show();
                 //     activityWeakReference.get().setResult(repairAggregateData.id);
                 //      activityWeakReference.get().finish();
+            }
+        }
+    }
+     static class UpdateTask extends AsyncTask <Void,Void,Boolean> {
+
+        private WeakReference<RepairActivity> activityWeakReference;
+        private RepairAggregateData repairAggregateData;
+
+        UpdateTask(RepairActivity repairActivity ,RepairAggregateData repairAggregateData){
+            activityWeakReference=new WeakReference<>(repairActivity);
+            this.repairAggregateData=repairAggregateData;
+
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            activityWeakReference.get().appDatabase.getPojoDao().update(repairAggregateData);
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean o) {
+            if (o){
+
             }
         }
     }

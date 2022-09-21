@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itiproject.AddOrder.AddOrderMyRecyclerAdapter;
 import com.example.itiproject.Enums.EnumRecyclerView;
+import com.example.itiproject.Repair.RepairActivity;
 import com.example.itiproject.Repair.RepairMyRecyclerAdapter;
 import com.example.itiproject.Sell.SellMyRecyclerAdapter;
 import com.example.itiproject.Shop.ShopAggregateData;
@@ -31,7 +32,7 @@ public class UtilRecyclerShow {
         }else if (adapterClass.equals(EnumRecyclerView.SellMyRecyclerAdapter)){
             adapter = new SellMyRecyclerAdapter(arrayList);
         }else if (adapterClass.equals(EnumRecyclerView.RepairMyReceyclerAdapter)){
-            adapter = new RepairMyRecyclerAdapter(arrayList);
+            adapter = new RepairMyRecyclerAdapter(arrayList, (RepairActivity) appCompatActivity);
         }else if (adapterClass.equals(EnumRecyclerView.AddOrderMyRecyclerAdapter)){
             adapter = new AddOrderMyRecyclerAdapter(arrayList);
         }
