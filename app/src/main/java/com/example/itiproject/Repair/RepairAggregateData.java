@@ -8,6 +8,7 @@ import com.example.itiproject.Util.Pojo.UtilPojoInterface;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Entity
 public class RepairAggregateData implements UtilPojoInterface, Serializable {
@@ -20,7 +21,7 @@ public class RepairAggregateData implements UtilPojoInterface, Serializable {
     @PrimaryKey (autoGenerate = true)
     public long id ;
     @ColumnInfo (name = "mapAttribute")
-    public LinkedHashMap attributeMap = new LinkedHashMap();
+    public LinkedHashMap <String ,Object>attributeMap = new LinkedHashMap();
 
     public RepairAggregateData(){
         attributeMap.put(PRODUCT_NAME,"");
@@ -42,5 +43,18 @@ public class RepairAggregateData implements UtilPojoInterface, Serializable {
     @Override
     public String getName() {
         return null;
+    }
+    public String toString (){
+        StringBuilder builder = new StringBuilder() ;
+        builder.append(id+"\n");
+        for (Map.Entry entry: attributeMap.entrySet()){
+            builder.append(entry.getKey().toString());
+            builder.append(" : ");
+            builder.append(entry.getValue().toString());
+            builder.append(" \n ");
+
+        }
+        return  builder.toString();
+
     }
 }

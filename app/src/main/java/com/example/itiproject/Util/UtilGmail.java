@@ -16,8 +16,8 @@ public class UtilGmail {
         intent.putExtra(Intent.EXTRA_SUBJECT, "test00");
         StringBuilder body = new StringBuilder();
 
-        for (T sellAggregateData :arrayListPojo) {
-            body.append(sellAggregateData.toString());
+        for (T AggregateData :arrayListPojo) {
+            body.append(AggregateData.toString());
             body.append(System.getProperty("line.separator"));
         }
 

@@ -78,7 +78,7 @@ public class StoreAggregateData implements UtilPojoInterface  {
                 ", price=" + getAttributeMap().get("price") +
                 ", quantity=" + getAttributeMap().get("quantity") +
                 ", soldDate=" + getAttributeMap().get("soldDate") +
-                '}';
+                "}\n \n";
     }
 
     @Override

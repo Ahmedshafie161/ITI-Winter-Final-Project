@@ -51,7 +51,12 @@ public class SellAggregateData implements UtilPojoInterface {
   public String getName() {
     return null;
   }
-
+    public String getShopName(){
+        return (String) attributeMap.get(SellAggregateData.SHOP_NAME);
+    }
+    public String getStoreName(){
+        return (String) attributeMap.get(SellAggregateData.STORE_NAME);
+    }
   @Override
     public String toString (){
       StringBuilder builder = new StringBuilder() ;
