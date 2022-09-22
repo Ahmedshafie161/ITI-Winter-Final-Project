@@ -1,14 +1,21 @@
 package com.example.itiproject.Store;
 
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.example.itiproject.Util.UtilDate;
 import com.example.itiproject.Util.Pojo.UtilPojoInterface;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
+@Entity
+public class StoreAggregateData implements UtilPojoInterface  {
 
-public class StoreAggregateData implements UtilPojoInterface {
-
+    @PrimaryKey(autoGenerate = true)
+    public  long id ;
+    @ColumnInfo
     public   LinkedHashMap<String,Object > attributeMap = new LinkedHashMap<>();
 
 
@@ -20,6 +27,7 @@ public class StoreAggregateData implements UtilPojoInterface {
         attributeMap.put("soldDate","");
     }
 
+    @Override
     public String getName() {
 
         return  (String) getAttributeMap().get("name");
@@ -35,11 +43,11 @@ public class StoreAggregateData implements UtilPojoInterface {
             return 0;
         return  Double.parseDouble(getAttributeMap().get("price").toString());
     }
-    public int getQuantity() {
+    public double getQuantity() {
         if(getAttributeMap().get("quantity").toString().trim().isEmpty()){
             return 0 ;
         }
-        return   Integer.parseInt(getAttributeMap().get("quantity").toString());
+        return   Double.parseDouble(getAttributeMap().get("quantity").toString());
     }
     public Date getSoldDate(){
 
@@ -51,12 +59,6 @@ public class StoreAggregateData implements UtilPojoInterface {
     }
     public void setQuantity(int quantity) {
         attributeMap.put("quantity", String.valueOf(quantity));
-    }
-
-    public String getShopName() {
-        /*if(!shopName.isEmpty());*/
-        return (String) getAttributeMap().get("shopName");
-
     }
 
     public void setShopName(String shopName) {
@@ -76,7 +78,7 @@ public class StoreAggregateData implements UtilPojoInterface {
                 ", price=" + getAttributeMap().get("price") +
                 ", quantity=" + getAttributeMap().get("quantity") +
                 ", soldDate=" + getAttributeMap().get("soldDate") +
-                '}';
+                "}\n \n";
     }
 
     @Override

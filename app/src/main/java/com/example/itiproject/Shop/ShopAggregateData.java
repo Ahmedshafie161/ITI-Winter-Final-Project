@@ -1,13 +1,21 @@
 package com.example.itiproject.Shop;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.example.itiproject.Util.UtilDate;
 import com.example.itiproject.Util.Pojo.UtilPojoInterface;
 
 import java.util.Date;
 import java.util.LinkedHashMap;
 
+@Entity
 public class ShopAggregateData implements UtilPojoInterface {
 
+    @PrimaryKey (autoGenerate = true)
+    public long id ;
+    @ColumnInfo
     public  LinkedHashMap<String,String > attributeMap = new LinkedHashMap<>();
 
     public  LinkedHashMap getAttributeMap() {
@@ -48,7 +56,8 @@ public class ShopAggregateData implements UtilPojoInterface {
 
     }
 
-    public String getShopName() {
+    @Override
+    public String getName() {
 
          return String.valueOf(getAttributeMap().get("shopName"));
     }

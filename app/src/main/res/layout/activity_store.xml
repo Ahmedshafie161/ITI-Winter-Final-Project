@@ -7,24 +7,28 @@
     tools:context=".Store.StoreActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/store_recyclerView"
         android:layout_width="381dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="192dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toTopOf="@+id/store_btnResut"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="54dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="80dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/store_etNumber"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -32,44 +36,50 @@
         android:id="@+id/store_btnResut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="83dp"
         android:onClick="resetNumbers"
         android:text="Reset Numbers"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/store_etNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/store_recyclerView" />
 
     <EditText
         android:id="@+id/store_etName"
-        android:layout_width="186dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp"
         android:ems="10"
         android:hint="Enter Name"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintBottom_toTopOf="@+id/store_etPrice"
+        app:layout_constraintEnd_toEndOf="@+id/store_etPrice"
+        app:layout_constraintStart_toStartOf="@+id/store_etPrice" />
 
     <EditText
         android:id="@+id/store_etPrice"
-        android:layout_width="186dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginBottom="21dp"
         android:ems="10"
         android:hint="Enter Price"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/store_etName"
-        app:layout_constraintTop_toBottomOf="@+id/store_etName" />
+        app:layout_constraintBottom_toTopOf="@+id/store_etNumber"
+        app:layout_constraintEnd_toEndOf="@+id/store_etNumber"
+        app:layout_constraintStart_toStartOf="@+id/store_etNumber" />
 
     <EditText
         android:id="@+id/store_etNumber"
-        android:layout_width="186dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="96dp"
         android:ems="10"
         android:hint="Enter Quantity"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/store_etName"
-        app:layout_constraintTop_toBottomOf="@+id/store_etPrice" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fab"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/store_btnResut" />
 </androidx.constraintlayout.widget.ConstraintLayout>

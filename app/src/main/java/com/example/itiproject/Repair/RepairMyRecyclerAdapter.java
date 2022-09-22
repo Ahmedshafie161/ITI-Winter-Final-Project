@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,12 +21,12 @@ import java.util.LinkedHashMap;
 
 public class RepairMyRecyclerAdapter extends RecyclerView.Adapter<RepairMyRecyclerAdapter.MyViewHolder> {
     ArrayList<RepairAggregateData> arrayAggrList ;
-    Context context;
+    RepairActivity context;
 
     // intilizing recycler with arraylist data , context and listener to send data back to activity
-    public RepairMyRecyclerAdapter(ArrayList<RepairAggregateData> arrayAggrList ) {
+    public RepairMyRecyclerAdapter(ArrayList<RepairAggregateData> arrayAggrList,RepairActivity repairActivity ) {
         this.arrayAggrList = arrayAggrList;
-        this.context = context;
+        this.context = repairActivity;
 
     }
     public RepairMyRecyclerAdapter() {
@@ -81,7 +83,8 @@ public class RepairMyRecyclerAdapter extends RecyclerView.Adapter<RepairMyRecycl
         public TextView tvDescription;
         public TextView tvProblemType;
         public TextView tvIsRepaired;
-        RepairAggregateData arrayAggr;   // required to send data to activity,used in listener
+        RepairAggregateData arrayAggr;
+        Switch mySwitch ;// required to send data to activity,used in listener
         //inflate views , register view listener, send data to activity
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,6 +93,7 @@ public class RepairMyRecyclerAdapter extends RecyclerView.Adapter<RepairMyRecycl
             this.tvDescription = itemView.findViewById(R.id.repair_Description);
             this.tvProblemType = itemView.findViewById(R.id.repair_problemType);
             this.tvIsRepaired = itemView.findViewById(R.id.repair_isRepaired);
+             mySwitch = itemView.findViewById(R.id.repair_switch);
 
         }
 
@@ -97,11 +101,19 @@ public class RepairMyRecyclerAdapter extends RecyclerView.Adapter<RepairMyRecycl
         void bind(RepairAggregateData arrayAggr ){
             attributeMap = arrayAggr.getAttributeMap() ;
             this.arrayAggr=arrayAggr;
-            tvProdName.setText("Product Name "+attributeMap.get(com.example.itiproject.Repair.RepairAggregateData.PRODUCT_NAME));
-            tvShopName.setText("Shop Name : "+attributeMap.get(com.example.itiproject.Repair.RepairAggregateData.SHOP_NAME));
-            tvDescription.setText("description : "+attributeMap.get(com.example.itiproject.Repair.RepairAggregateData.DESCRIPTION));
-            tvProblemType.setText("problemType: "+attributeMap.get(com.example.itiproject.Repair.RepairAggregateData.PROBLEM_TYPE));
+            tvProdName.setText("Product Name "+attributeMap.get(RepairAggregateData.PRODUCT_NAME));
+            tvShopName.setText("Shop Name : "+attributeMap.get(RepairAggregateData.SHOP_NAME));
+            tvDescription.setText("description : "+attributeMap.get(RepairAggregateData.DESCRIPTION));
+            tvProblemType.setText("problemType: "+attributeMap.get(RepairAggregateData.PROBLEM_TYPE));
             tvIsRepaired.setText("is repaired : "+attributeMap.get(RepairAggregateData.IS_SOLVED));
+
+            mySwitch.setChecked(Boolean.parseBoolean((String) arrayAggr.getAttributeMap().get(RepairAggregateData.IS_SOLVED)));
+            mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                  arrayAggr.getAttributeMap().put(RepairAggregateData.IS_SOLVED,"true");
+                    new RepairActivity.UpdateTask( context,arrayAggr).execute();
+                }
+            });
         }
 
     }

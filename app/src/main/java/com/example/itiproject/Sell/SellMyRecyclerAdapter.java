@@ -10,15 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itiproject.R;
+import com.example.itiproject.Shop.ShopAggregateData;
 import com.example.itiproject.Store.StoreAggregateData;
 
 import java.util.ArrayList;
 
 public class SellMyRecyclerAdapter extends RecyclerView.Adapter<SellMyRecyclerAdapter.MyViewHolder> {
-    ArrayList<StoreAggregateData> arrayAggrList ;
+    ArrayList<SellAggregateData> arrayAggrList ;
     Context context;
     // intilizing recycler with arraylist data , context and listener to send data back to activity
-    public SellMyRecyclerAdapter(ArrayList<StoreAggregateData> arrayAggrList ) {
+    public SellMyRecyclerAdapter(ArrayList<SellAggregateData> arrayAggrList ) {
         this.arrayAggrList = arrayAggrList;
         this.context = context;
 
@@ -44,17 +45,17 @@ public class SellMyRecyclerAdapter extends RecyclerView.Adapter<SellMyRecyclerAd
 
         //MyAggregateData myAggregateData = arrayAggr.get(position);
         //assign data to view associated with holder, bind data
-        StoreAggregateData arrayAggr= arrayAggrList.get(position);
+        SellAggregateData arrayAggr= arrayAggrList.get(position);
         holder.bind(arrayAggr);
 
 
     }
-    public void setList(ArrayList<StoreAggregateData> sellAggregateData){
+    public void setList(ArrayList<SellAggregateData> sellAggregateData){
         this.arrayAggrList = sellAggregateData;
         notifyDataSetChanged();
     }
 
-    public void addItem(StoreAggregateData mA){
+    public void addItem(SellAggregateData mA){
         this.arrayAggrList.add(mA);
         notifyDataSetChanged();
     }
@@ -73,7 +74,7 @@ public class SellMyRecyclerAdapter extends RecyclerView.Adapter<SellMyRecyclerAd
         public TextView etMoney;
         public TextView etQuantity;
         public TextView etDate;
-        StoreAggregateData arrayAggr;   // required to send data to activity,used in listener
+            SellAggregateData sellAggregateData;   // required to send data to activity,used in listener
         //inflate views , register view listener, send data to activity
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -86,16 +87,23 @@ public class SellMyRecyclerAdapter extends RecyclerView.Adapter<SellMyRecyclerAd
 
         }
         // bind data to views
-        void bind(StoreAggregateData arrayAggr ){
-            this.arrayAggr=arrayAggr;
-            etShopName.setText("Shop Name "+ arrayAggr.getShopName());
+        void bind(SellAggregateData arrayAggr ){
+            this.sellAggregateData =arrayAggr;
 
-            etProductName.setText("Product Name "+ arrayAggr.getName());
-            etMoney.setText("Total Money : "+String.valueOf((arrayAggr.getPrice()*arrayAggr.getQuantity())));
-            etQuantity.setText("Quantity : "+String.valueOf(arrayAggr.getQuantity()));
-            if(arrayAggr.getSoldDate()!=null){
-                etDate.setText("Date : "+arrayAggr.getSoldDate().toString()) ;
-            }
+            //Map.Entry entry = arrayAggr.getAttributeMap().entrySet().iterator().next();
+            // sellAggregateData = entry.getKey();
+             //shopAggregateData = entry.getValue();
+            etShopName.setText("Shop Name : "+ sellAggregateData.attributeMap.get(SellAggregateData.SHOP_NAME));
+            etProductName.setText("Product Name : "+ sellAggregateData.attributeMap.get(SellAggregateData.STORE_NAME));
+            Double price = (double)sellAggregateData.attributeMap.get(SellAggregateData.PRICE);
+            Double quantity =(double) sellAggregateData.attributeMap.get(SellAggregateData.QUANTITY);
+
+            //int quantity = (int) sellAggregateData.attributeMap.get(SellAggregateData.QUANTITY);
+
+//            etMoney.setText("Total Money : "+ price*quantity);
+            etQuantity.setText("Quantity : "+ sellAggregateData.attributeMap.get(SellAggregateData.QUANTITY));
+            etDate.setText("Date : "+sellAggregateData.attributeMap.get(SellAggregateData.DATE)) ;
+
 
         }
 
